@@ -1,0 +1,22 @@
+{% extends "main/base.html" %}
+{% block title %}Questions{% endblock title %}
+
+{% block content %}
+    <div class="question-container">
+        {% for item in question %}
+            <div class="question-item">
+                <h2 class="question-title">Question</h2>
+                <p class="question-text">{{ item.question.text }}</p>
+                <p class="question-date">{{ item.question.created_at }}</p>
+                <details class="answer-details">
+                    <summary class="answer-summary account-text">View Answer</summary>
+                    <hr class="answer-divider">
+                    <h2 class="answer-title account-text">Answer</h2>
+                    <p class="answer-text">{{ item.text }}</p>
+                    <p class="answer-date">{{ item.created_at }}</p>
+                    <hr class="answer-divider">
+                </details>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock content %}

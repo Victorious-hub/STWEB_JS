@@ -1,0 +1,24 @@
+{% extends "clients/client_base.html" %}
+{% block title %}Client Profile{% endblock title %}
+
+{% block content %}
+    <div>
+        <h1>Your policy</h1>
+        <ul>
+            <p>Client: {{ policy.contract.client }}</p>
+            <p>Insurance sum: {{ policy.insurance_sum }}</p>
+            <p>Price: {{ policy.price }}</p>
+            <p>Start date: {{ policy.start_date }}</p>
+            <p>End date: {{ policy.end_date }}</p>
+        </ul>
+        <form method="post">
+            {% endif %}
+            {% csrf_token %}
+            <div>
+                <label for="coupon">Coupon</label>
+                <input type="text" id="coupon" name="coupon" placeholder="Enter coupon code">
+            </div>
+            <button type="submit">Confirm and pay</button>
+        </form>
+    </div>
+{% endblock content %}

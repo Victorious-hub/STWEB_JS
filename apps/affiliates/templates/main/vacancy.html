@@ -1,0 +1,22 @@
+{% extends "main/base.html" %}
+
+{% block content %}
+    <div class="vacancy-list">
+        {% for item in vacancies %}
+            <div class="vacancy-item">
+                <fieldset>
+                    <legend>{{ item.title }}</legend>
+                    <div class="left">
+                        <p class="account-text"><strong>Salary:</strong> <span>{{ item.salary }} Byn</span></p>
+                        <p class="account-text"><strong>Experience:</strong> <span>{{ item.experience }} year(s)</span></p>
+                        <p class="account-text"><strong>Created at:</strong> <span>{{ item.created_at }}</span></p>
+                    </div>
+                    <div class="right">
+                        <p class="account-text"><strong>Description:</strong> <span>{{ item.description }}</span></p>
+                    </div>
+                    <div class="clear"></div>
+                </fieldset>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock content %}

@@ -1,0 +1,21 @@
+{% extends "clients/client_base.html" %}
+{% block title %}Client Profile{% endblock title %}
+
+{% block content %}
+    <div>
+        <h1>Your policy</h1>
+        <ul>
+            <li>Agent first name: {{ policy.agent.user.first_name }}</li>
+            <li>Agent last name: {{ policy.agent.user.last_name }}</li>
+            <li>Agent affiliate: {{ policy.agent.affiliate }}</li>
+        </ul>
+        <ul>
+            <li>Contract: {{ policy.contract }}</li>
+        </ul>
+        <p>Insurance sum: {{ policy.insurance_sum }}</p>
+        <p>Price: {{ policy.price }}</p>
+        <p>Start date: {{ policy.start_date }}</p>
+        <p>End date: {{ policy.end_date }}</p>
+        <hr>
+    </div>
+{% endblock content %}

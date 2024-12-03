@@ -1,0 +1,16 @@
+{% extends "main/base.html" %}
+{% block title %}Coupons{% endblock title %}
+
+{% block content %}
+    <h1>Coupons List</h1>
+    <ul class="coupon-list">
+        {% for item in coupon %}
+            <li class="coupon-item {% if item.active %}active{% else %}archived{% endif %}">
+                <strong class="account-text"><u><em>Coupon is {% if item.active %}active{% else %}in archive{% endif %}</em></u></strong>
+                <p>Code: <span class="coupon-code">{{ item.code }}</span></p>
+                <p>Discount: <span class="coupon-discount">{{ item.discount }}%</span></p>
+                <hr class="coupon-separator">
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock content %}

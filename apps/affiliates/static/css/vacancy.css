@@ -1,0 +1,39 @@
+.vacancy-list {
+    width: 70%;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.vacancy-item {
+    margin-bottom: 20px;
+}
+
+.vacancy-item fieldset {
+    border: 2px solid #007bff;
+    border-radius: 8px;
+    padding: 10px;
+    transition: transform 0.3s ease, border-color 0.3s ease;
+}
+
+.vacancy-item legend {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #007bff;
+}
+
+.vacancy-item .left {
+    float: left;
+    width: 45%;
+}
+
+.vacancy-item .right {
+    float: right;
+    width: 45%;
+}
+
+.clear {
+    clear: both;
+}

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Student Info</title>
+    <style>
+        .student-card {
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 16px;
+            margin: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            display: inline-block;
+            width: 200px;
+        }
+        .student-card h3 {
+            margin: 0 0 8px 0;
+        }
+        .student-card p {
+            margin: 4px 0;
+        }
+    </style>
+</head>
+<body>
+    <form id="studentForm">
+        <input type="text" id="surname" placeholder="Фамилия" maxlength="12" required>
+        <input type="text" id="name" placeholder="Имя" maxlength="12" required>
+        <input type="text" id="patronymic" placeholder="Отчество" maxlength="12" required>
+        <input type="text" id="gender" placeholder="Пол (М/Ж)" maxlength="1" required>
+        <input type="number" id="age" placeholder="Возраст" min="16" max="35" required>
+        <input type="number" id="course" placeholder="Курс" min="1" max="5" required>
+        <button type="button" onclick="Student.addStudent()">Добавить студента</button>
+    </form>
+    <div id="studentList"></div>
+    <div id="result"></div>
+    <button type="button" onclick="Student.calculateResult()">Вычислить результат</button>
+
+    <!-- Подключаем скрипты -->
+    <script src="task_class.js"></script>
+</body>
+</html>

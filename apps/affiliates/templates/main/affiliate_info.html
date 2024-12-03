@@ -1,0 +1,14 @@
+{% extends "main/base.html" %}
+
+{% block content %}
+    <div class="affiliate-container">
+        {% for item in affiliate %}
+            <div class="affiliate-card">
+                <p class="account-text">Name: {{ item.name }}</p>
+                <p class="account-text">Address: {{ item.address }}</p>
+                <p class="account-text">Phone: {{ item.phone }}</p>
+                <a href="{% url 'affiliate_employee' item.id %}">Check employee stuff</a>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock content %}

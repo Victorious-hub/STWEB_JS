@@ -1,0 +1,42 @@
+{% extends "main/base.html" %}
+{% block header %}
+    <h1 class="header-text">Privacy Policy</h1>
+{% endblock header %}
+
+{% block content %}
+    <ul>
+        <small class="account-text">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</small><br>
+        <p class="account-text">Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,</p><br>
+        <p class="account-text">an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+        <p class="account-text">It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+    </ul>
+
+    <div class="container">
+        <form>
+            <h2 class="account-text">Согласие на обработку данных</h2>
+            <label for="email" class="account-text">Email:</label>
+            <input type="email" id="email" name="email" placeholder="Введите ваш email" required>
+            <br>
+            <label for="age" class="account-text">Возраст:</label>
+            <input type="number" id="age" name="age" min="0" max="120">
+            <br>
+            <label for="disabled-input" class="account-text">Disabled Input:</label>
+            <input type="text" id="disabled-input" name="disabled-input" disabled>
+            <br>
+            <label for="out-of-range" class="account-text">Out of Range:</label>
+            <input type="number" id="out-of-range" name="out-of-range" min="0" max="10" value="15">
+            <br>
+            <label for="radio-test" class="account-text">Radio Test:</label>
+            <input type="radio" id="radio-test" name="radio-test" checked>
+            <br>
+            <label for="accept-terms" class="account-text">Я согласен с условиями политики конфиденциальности</label>
+            <input type="checkbox" id="accept-terms" required>
+            <label class="switch">
+                <input type="checkbox">
+                <span class="slider round"></span>
+            </label>
+            <br>
+            <input type="submit" value="Отправить">
+        </form>
+    </div>
+{% endblock content %}

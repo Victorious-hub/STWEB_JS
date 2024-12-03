@@ -1,0 +1,26 @@
+{% extends "main/base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="container">
+    <div class="registration form">
+        <form method="POST" action="{% url 'client_register' %}">
+            {% csrf_token %}
+            <h1 class="account-text middle">Registration</h1>
+            <div class="input-wrapper">
+                {% for field in form %}
+                <div class="input-group">
+                    {{ field.label_tag }}
+                    {{ field }}
+                </div>
+                {% endfor %}
+            </div>
+            <input type="submit" class="button" value="Submit" />
+        </form>
+        <div>
+            <p class="account-text">Already have an account? <a href="{% url 'login' %}">Login</a></p>
+            <p class="account-text">Go to main <a href="{% url 'main' %}">Main</a></p>
+        </div>
+    </div>
+</div>
+{% endblock content %}

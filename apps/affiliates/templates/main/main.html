@@ -1,0 +1,230 @@
+{% extends "main/base.html" %}
+{% load static %}
+
+{% block content %}
+<style>
+    a[href*="extranet"] > p {    
+        color: green;
+    }
+
+    a[href^="https"] > p {    
+        font-size: 20px;
+        text-shadow: 5px 4px 3px #999;
+    }
+    a[href$=".by"] > p {    
+        color: orange;
+    }
+
+    .classqrqrqwrqwr:link{
+        color: red;
+    }
+    
+</style>
+<div id="slider-container">
+    <div class="slide-number"></div>
+    <div id="top">
+        <img src="{% static 'images/left-arrow.png' %}" alt="" class="arrow arrow-left">
+        <div id="frame">
+            <div id="slider">
+                <img src="{% static 'images/banner1.jpg' %}" alt="Some text" class="slider-image">
+                <img src="{% static 'images/banner2.jpg' %}" alt="Some text" class="slider-image">
+                <img src="{% static 'images/banner3.jpg' %}"  alt="Some text" class="slider-image">
+                <img src="{% static 'images/banner4.jpg' %}" alt="Some text" class="slider-image">
+            </div>
+        </div>
+        <img src="{% static 'images/right-arrow.png' %}" alt="" class="arrow arrow-right">
+    </div>
+    <div id="bottom"></div>
+</div>
+
+{% if request.user.is_superuser and request.user.is_authenticated %}
+<div id="slider-settings">
+    <label>
+        <input type="checkbox" id="loop" checked> Loop
+    </label>
+    <label>
+        <input type="checkbox" id="navs" checked> Show Navigation
+    </label>
+    <label>
+        <input type="checkbox" id="pags" checked> Show Pagination
+    </label>
+    <label>
+        <input type="checkbox" id="auto" checked> Auto Slide
+    </label>
+    <label>
+        <input type="checkbox" id="stop-mouse-hover" checked> Stop on Hover
+    </label>
+    <label>
+        Slide Delay (seconds): 
+        <input type="number" id="delay" value="3" min="1">
+    </label>
+    <button id="apply-settings">Apply Settings</button>
+</div>
+{% endif %}
+
+<div class="preloader" id="preloader">
+    <svg class="pl" viewBox="0 0 160 160" width="160px" height="160px" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+            <linearGradient id="grad" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stop-color="#000"></stop>
+                <stop offset="100%" stop-color="#fff"></stop>
+            </linearGradient>
+            <mask id="mask1">
+                <rect x="0" y="0" width="160" height="160" fill="url(#grad)"></rect>
+            </mask>
+            <mask id="mask2">
+                <rect x="28" y="28" width="104" height="104" fill="url(#grad)"></rect>
+            </mask>
+        </defs>
+
+        <!-- Outer rotating ring -->
+        <g>
+            <g class="pl__ring-rotate">
+                <circle class="pl__ring-stroke" cx="80" cy="80" r="72" fill="none" stroke="hsl(223,90%,55%)"
+                    stroke-width="16" stroke-dasharray="452.39 452.39" stroke-dashoffset="452" stroke-linecap="round"
+                    transform="rotate(-45,80,80)"></circle>
+            </g>
+        </g>
+
+        <!-- Inner rotating ring with mask -->
+        <g mask="url(#mask1)">
+            <g class="pl__ring-rotate">
+                <circle class="pl__ring-stroke" cx="80" cy="80" r="72" fill="none" stroke="hsl(193,90%,55%)"
+                    stroke-width="16" stroke-dasharray="452.39 452.39" stroke-dashoffset="452" stroke-linecap="round"
+                    transform="rotate(-45,80,80)"></circle>
+            </g>
+        </g>
+
+        <!-- Static ticks around the compass -->
+        <g>
+            <g stroke-width="4" stroke-dasharray="12 12" stroke-dashoffset="12" stroke-linecap="round"
+                transform="translate(80,80)">
+                <!-- Eight ticks at 45 degree intervals -->
+                <polyline class="pl__tick" stroke="hsl(223,10%,90%)" points="0,2 0,14"
+                    transform="rotate(-135,0,0) translate(0,40)"></polyline>
+                <polyline class="pl__tick" stroke="hsl(223,10%,90%)" points="0,2 0,14"
+                    transform="rotate(-90,0,0) translate(0,40)"></polyline>
+                <polyline class="pl__tick" stroke="hsl(223,10%,90%)" points="0,2 0,14"
+                    transform="rotate(-45,0,0) translate(0,40)"></polyline>
+                <polyline class="pl__tick" stroke="hsl(223,10%,90%)" points="0,2 0,14"
+                    transform="rotate(0,0,0) translate(0,40)"></polyline>
+                <polyline class="pl__tick" stroke="hsl(223,10%,90%)" points="0,2 0,14"
+                    transform="rotate(45,0,0) translate(0,40)"></polyline>
+                <polyline class="pl__tick" stroke="hsl(223,10%,90%)" points="0,2 0,14"
+                    transform="rotate(90,0,0) translate(0,40)"></polyline>
+                <polyline class="pl__tick" stroke="hsl(223,10%,90%)" points="0,2 0,14"
+                    transform="rotate(135,0,0) translate(0,40)"></polyline>
+                <polyline class="pl__tick" stroke="hsl(223,10%,90%)" points="0,2 0,14"
+                    transform="rotate(180,0,0) translate(0,40)"></polyline>
+            </g>
+        </g>
+
+        <!-- Inner rotating ticks with mask -->
+        <g mask="url(#mask1)">
+            <g stroke-width="4" stroke-dasharray="12 12" stroke-dashoffset="12" stroke-linecap="round"
+                transform="translate(80,80)">
+                <!-- Eight inner ticks at 45 degree intervals -->
+                <polyline class="pl__tick" stroke="hsl(223,90%,80%)" points="0,2 0,14"
+                    transform="rotate(-135,0,0) translate(0,40)"></polyline>
+                <polyline class="pl__tick" stroke="hsl(223,90%,80%)" points="0,2 0,14"
+                    transform="rotate(-90,0,0) translate(0,40)"></polyline>
+                <polyline class="pl__tick" stroke="hsl(223,90%,80%)" points="0,2 0,14"
+                    transform="rotate(-45,0,0) translate(0,40)"></polyline>
+                <polyline class="pl__tick" stroke="hsl(223,90%,80%)" points="0,2 0,14"
+                    transform="rotate(0,0,0) translate(0,40)"></polyline>
+                <polyline class="pl__tick" stroke="hsl(223,90%,80%)" points="0,2 0,14"
+                    transform="rotate(45,0,0) translate(0,40)"></polyline>
+                <polyline class="pl__tick" stroke="hsl(223,90%,80%)" points="0,2 0,14"
+                    transform="rotate(90,0,0) translate(0,40)"></polyline>
+                <polyline class="pl__tick" stroke="hsl(223,90%,80%)" points="0,2 0,14"
+                    transform="rotate(135,0,0) translate(0,40)"></polyline>
+                <polyline class="pl__tick" stroke="hsl(223,90%,80%)" points="0,2 0,14"
+                    transform="rotate(180,0,0) translate(0,40)"></polyline>
+            </g>
+        </g>
+
+        <!-- Compass arrows -->
+        <g>
+            <g transform="translate(64,28)">
+                <g class="pl__arrows" transform="rotate(45,16,52)">
+                    <!-- Red arrow -->
+                    <path fill="hsl(3,90%,55%)"
+                        d="M17.998,1.506l13.892,43.594c.455,1.426-.56,2.899-1.998,2.899H2.108c-1.437,0-2.452-1.473-1.998-2.899L14.002,1.506c.64-2.008,3.356-2.008,3.996,0Z">
+                    </path>
+                    <!-- White arrow -->
+                    <path fill="hsl(223,10%,90%)"
+                        d="M14.009,102.499L.109,58.889c-.453-1.421,.559-2.889,1.991-2.889H29.899c1.433,0,2.444,1.468,1.991,2.889l-13.899,43.61c-.638,2.001-3.345,2.001-3.983,0Z">
+                    </path>
+                </g>
+            </g>
+        </g>
+
+        <!-- Inner arrows with mask -->
+        <g mask="url(#mask2)">
+            <g transform="translate(64,28)">
+                <g class="pl__arrows" transform="rotate(45,16,52)">
+                    <!-- Pink arrow -->
+                    <path fill="hsl(333,90%,55%)"
+                        d="M17.998,1.506l13.892,43.594c.455,1.426-.56,2.899-1.998,2.899H2.108c-1.437,0-2.452-1.473-1.998-2.899L14.002,1.506c.64-2.008,3.356-2.008,3.996,0Z">
+                    </path>
+                    <!-- Light blue arrow -->
+                    <path fill="hsl(223,90%,80%)"
+                        d="M14.009,102.499L.109,58.889c-.453-1.421,.559-2.889,1.991-2.889H29.899c1.433,0,2.444,1.468,1.991,2.889l-13.899,43.61c-.638,2.001-3.345,2.001-3.983,0Z">
+                    </path>
+                </g>
+            </g>
+        </g>
+    </svg>
+</div>
+<div class="animation-wrapper">
+    <div class="animation-container">
+        <div class="scene">
+            <img src="{% static 'images/dom-fire.png' %}" style="width: 250px;"alt="Burning House" class="house" id="burning-house">
+            <img src="{% static 'images/fire.png' %}" alt="Ash" style="width: 250px;" class="ash" id="ash">
+            <img src="{% static 'images/cry-man.png' %}" alt="Crying Person" style="width: 250px;" class="person" id="crying-person">
+            <img src="{% static 'images/rich-man.png' %}" alt="Money" style="width: 250px;" class="money" id="money">
+            <img src="{% static 'images/money-person.png' %}" alt="Money Man" style="width: 250px;" class="money-man" id="money-man">
+            <img src="{% static 'images/mainhouse.png' %}" alt="New House" style="width: 250px;" class="new-house" id="new-house">
+            <img src="{% static 'images/happy-man.png' %}" alt="Happy man" style="width: 250px;" class="happy-man" id="happy-man">
+            <img src="{% static 'images/pepel.png' %}" alt="Ash" class="pepel" id="pepel1">
+            <img src="{% static 'images/pepel.png' %}" alt="Ash" class="pepel" id="pepel2">
+            <img src="{% static 'images/pepel.png' %}" alt="Ash" class="pepel" id="pepel3">
+        </div>
+        <div class="company-name" id="company-name">RockSolid</div>
+    </div>
+</div>
+
+
+<div class="container-news">
+    <h1>Last News</h1>
+    {% if news.image %}
+        <img src="{{ news.image.url }}" alt="..." />
+    {% endif %}
+    <p>Title: {{ news.title }}</p>
+    <p>Description: {{ news.content | safe | truncatewords:"50" | linebreaks }}</p>
+    <p>Created at: {{ news.created_at }}</p>
+
+    {% if news.content|length > 50 %}
+        <a href="{% url 'news_detail' news.id %}">Read More</a>
+    {% endif %}
+</div>
+
+<hr>
+<h1 id="partners">Our Partners</h1>
+<div class="partners-container">
+    {% for partner in company_partners %}
+        <div class="partner-block">
+            {% if partner.image %}
+                <a href="{{ partner.company_url }}">
+                    <p class="partner-name">{{ partner.information }}</p>
+                    <img src="{{ partner.image.url }}" alt="...">
+                </a>
+            {% endif %}
+        </div>
+    {% endfor %}
+</div>
+
+<h1 id="ads">ADS Banners</h1>
+<img src="{% static 'images/affiliate.jpg' %}" style="width:500px;height:250px;">
+<img src="{% static 'images/affiliate1.jpg' %}" style="width:500px;height:250px;">
+{% endblock content %}

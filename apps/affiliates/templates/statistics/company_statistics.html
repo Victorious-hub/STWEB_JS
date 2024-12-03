@@ -1,0 +1,77 @@
+{% extends "main/base.html" %}
+{% load static %}
+
+{% block content %}
+<h2>All Clients</h2>
+<table class="styled-table">
+    <caption class="table-caption">Statistics header</caption>
+    <thead>
+        <tr>
+            <th class="account-text">Profile image</th>
+            <th id="email" class="account-text">Email</th>
+            <th class="account-text">First Name</th>
+            <th class="account-text">Last Name</th>
+            <th class="account-text">Date of Birth</th>
+            <th class="account-text">Address</th>
+            <th class="account-text">Phone</th>
+            <th class="account-text">Balance</th>
+            <th class="account-text">Age</th>
+            <th class="account-text">Gender</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for client in total_clients %}
+        <tr>
+            <td>
+                {% if client.user.profile_image %}
+                    <img src="{{ client.user.profile_image.url }}" class="img1" alt="Profile Image" />
+                {% endif %}
+            </td>
+            <td headers="email" class="account-text">{{ client.user.email }}</td>
+            <td class="account-text">{{ client.user.first_name }}</td>
+            <td class="account-text">{{ client.user.last_name }}</td>
+            <td class="account-text">{{ client.user.date_birth }}</td>
+            <td class="account-text">{{ client.address }}</td>
+            <td class="account-text">{{ client.phone }}</td>
+            <td class="account-text">{{ client.balance }}</td>
+            <td class="account-text">{{ client.user.age }}</td>
+            <td class="account-text">{{ client.gender }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<h2>Other Statistics</h2>
+<table class="styled-table">
+    <caption class="table-caption">Additional Statistics</caption>
+    <thead>
+        <tr>
+            <th class="account-text">Statistic</th>
+            <th class="account-text">Value</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td class="account-text">Total Policy Price</td>
+            <td class="account-text">{{ total_policy_price }}</td>
+        </tr>
+        <tr>
+            <td class="account-text">Client Age Median</td>
+            <td class="account-text">{{ client_median }}</td>
+        </tr>
+        <tr>
+            <td class="account-text">Client Age Mean</td>
+            <td class="account-text">{{ client_mean }}</td>
+        </tr>
+        <tr>
+            <td class="account-text">Client Age Mode</td>
+            <td class="account-text">{{ client_mode }}</td>
+        </tr>
+    </tbody>
+</table>
+<tfoot>
+    <tr>
+        <td colspan="2">Footer</td>
+    </tr>
+</tfoot>
+{% endblock content %}

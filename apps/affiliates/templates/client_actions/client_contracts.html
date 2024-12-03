@@ -1,0 +1,86 @@
+{% extends "clients/client_base.html" %}
+{% block title %}Client Profile{% endblock title %}
+
+{% block content %}
+    <div>
+        <div>
+            {% if contracts %}
+                <h2>Created</h2>
+                {% for contract in contracts %}
+                    {% if contract.status == 1 %}
+                        <div>
+                            <div>
+                                <ul>
+                                    <li>{{ contract.client }}</li>
+                                    <li>{{ contract.affiliate }}</li>
+                                    <li>{{ contract.created_at }}</li>
+                                    <li>{{ contract.insurance_object }}</li>
+                                </ul>
+                                <a href="{% url 'contract_udpate' contract.id %}">Update contract</a>
+                                <a href="{% url 'contract_sign' contract.id %}">Sign contract</a>
+                                <a href="{% url 'contract_delete' contract.id %}">Delete contract</a>
+                            </div>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+            <div>
+                <h2>Signed</h2>
+                {% for contract in contracts %}
+                    {% if contract.status == 2 %}
+                        <div>
+                            <div>
+                                <ul>
+                                    <li>{{ contract.client }}</li>
+                                    <li>{{ contract.affiliate }}</li>
+                                    <li>{{ contract.created_at }}</li>
+                                    <li>{{ contract.insurance_object }}</li>
+                                </ul>
+                            </div>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+            <div>
+                <h2>Confirmed</h2>
+                {% for contract in contracts %}
+                    {% if contract.status == 3 %}
+                        <div>
+                            <div>
+                                <ul>
+                                    <li>{{ contract.client }}</li>
+                                    <li>{{ contract.affiliate }}</li>
+                                    <li>{{ contract.created_at }}</li>
+                                    <li>{{ contract.insurance_object }}</li>
+                                </ul>
+                                <a href="{% url 'client_policy' contract.id %}">Pay</a>
+                            </div>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+
+            <div>
+                <h2>Completed</h2>
+                {% for contract in contracts %}
+                    {% if contract.status == 4 %}
+                        <div>
+                            <div>
+                                <ul>
+                                    <li>{{ contract.client }}</li>
+                                    <li>{{ contract.affiliate }}</li>
+                                    <li>{{ contract.created_at }}</li>
+                                    <li>{{ contract.insurance_object }}</li>
+                                </ul>  
+                                <a href="{% url 'client_policy_detail' contract.id %}">Detail</a>
+                            </div>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            
+            {%else%}
+                <h1>You don't have any contracts yet</h1>
+            {% endif %}
+        </div>
+    </div>
+{% endblock content %}

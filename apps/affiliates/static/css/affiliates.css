@@ -1,0 +1,114 @@
+/* % — Процентное соотношение от размера родительского элемента.
+em — относительный размер шрифта: 1 em равен текущему размеру шрифта родительского элемента.
+rem — относительный размер шрифта относительно корневого элемента:
+1 rem равен размеру шрифта корневого элемента (html).
+vh — проценты от высоты окна браузера:
+
+1 vh — это 1% высоты окна.
+Пример: height: 50vh; — элемент будет занимать 50% высоты окна.
+vw — проценты от ширины окна браузера:
+
+1 vw — это 1% ширины окна.
+Пример: width: 100vw; — элемент будет занимать 100% ширины окна.
+vmin и vmax — минимальный и максимальный процент от ширины и высоты окна:
+
+vmin — выбирает наименьшее значение между vh и vw.
+vmax — выбирает наибольшее значение между vh и vw.
+Пример: width: 50vmin; — ширина будет 50% от меньшей из сторон окна.
+ch — ширина одного символа «0»:
+
+Определяет размер в зависимости от ширины символа 0 текущего шрифта.
+Пример: width: 20ch; — ширина элемента будет равна ширине 20 символов «0».
+ex — высота символа "x":
+
+Измеряет высоту строчной буквы x в текущем шрифте.
+Пример: height: 2ex;
+lh — высота строки:
+*/
+
+
+
+.header, .footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+.header .logo {
+    font-size: 1.5em;
+}
+
+.header nav {
+    display: flex;
+    gap: 5px;
+}
+
+.header nav a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.header nav a:hover {
+    color: #ddd;
+}
+
+.affiliate-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 20px;
+}
+
+
+.affiliate-card {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin: 5px;
+    padding: 20px;
+    text-align: center;
+    width: 350px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.affiliate-card p {
+    margin: 5px 0;
+}
+
+.affiliate-card a {
+    display: inline-block;
+    margin-top: 10px;
+    color: #007bff;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.affiliate-card a:hover {
+    color: #0056b3;
+}
+
+.footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px 20px;
+}
+.profile-image {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-left: 75px;
+}

@@ -1,0 +1,50 @@
+{% extends "main/base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="certificate-wrapper">
+    <div class="certificate-container">
+        <div class="certificate-header">
+            <h1 class="account-text">Единый реестр турагентов</h1>
+            <h2 class="account-text">СВИДЕТЕЛЬСТВО</h2>
+            <h3 class="account-text">о внесении сведений</h3>
+        </div>
+
+        <div class="certificate-body">
+            <p class="account-text">Реестровый номер: <strong>8241</strong></p>
+        </div>
+
+        <div class="certificate-footer">
+            <div class="sign">
+                <img src="{% static 'images/signature.png' %}" alt="Signature">
+                <p class="account-text">Осадчук А.П.</p>
+                <p class="account-text">Директор Ассоциации "ТУРПОМОЩЬ"</p>
+            </div>
+
+            <div class="director-info">
+                <p class="account-text">Ассоциация "Объединение туроператоров"</p>
+                <p class="account-text">по выездному туризму "ТУРПОМОЩЬ"</p>
+                <p class="account-text">109147, г. Москва, ул. Марксистская, д.24/7</p>
+                <p class="account-text">Тел.: +7 (495) 981-5532</p>
+                <p class="account-text">Email: info@turpom.ru</p>
+            </div>
+        </div>
+
+        <div class="seal">
+            <img src="{% static 'images/affiliate-marketing.png' %}" alt="Seal" style="width:50px;height:50px;">
+        </div>
+    </div>
+
+    <div class="company-info-container">
+        <ul>
+            {% for item in company %}
+            <q lang="ru" class="account-text">{{ item.information }}</q><br>
+            <q lang="en" class="account-text">Some information</q>
+            <blockquote>
+                <li>{{ item.history }}</li>
+            </blockquote>
+            {% endfor %}
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/4TQj6fbq0oI?si=zbuwfncRV7A_zgoE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </ul>
+    </div>
+{% endblock content %}

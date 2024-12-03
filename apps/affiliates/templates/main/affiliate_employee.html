@@ -1,0 +1,18 @@
+{% extends "main/base.html" %}
+{% block header %}Affiliate Agent List{% endblock header %}
+
+{% block content %}
+    <div class="affiliate-container">
+        {% for item in affiliate %}
+            <div class="affiliate-card">
+                <p class="account-text">First Name: {{ item.user.first_name }}</p>
+                <p class="account-text">Last Name: {{ item.user.last_name }}</p>
+                <p class="account-text">Email: {{ item.user.email }}</p>
+                <p class="account-text">Age: {{ item.user.age }}</p>
+                {% if item.user.profile_image %}
+                    <img src="{{ item.user.profile_image.url }}" alt="Profile Image" class="profile-image" />
+                {% endif %}
+            </div>
+        {% endfor %}
+    </div>
+{% endblock content %}

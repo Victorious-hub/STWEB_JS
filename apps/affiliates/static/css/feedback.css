@@ -1,0 +1,75 @@
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    word-spacing: 0.1em;
+    letter-spacing: 0.05em;
+    text-align: justify;
+}
+
+.feedback-item {
+    margin: 20px 0;
+    padding: 10px;
+    text-indent: 2em;
+}
+
+.feedback-client,
+.feedback-title,
+.feedback-description,
+.feedback-rating,
+.feedback-created-at {
+    margin-bottom: 10px;
+}
+
+.feedback-title {
+    text-transform: uppercase;
+}
+
+.feedback-description {
+    font-variant: small-caps;
+}
+
+.feedback-item p {
+    hyphens: auto;
+}
+
+a {
+    display: block;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.feedback-item p::first-letter {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #333;
+}
+
+.feedback-item p::before {
+    content: "Start of feedback: ";
+    font-weight: bold;
+    color: #555;
+}
+
+.feedback-item p::after {
+    content: " End of feedback.";
+    font-weight: bold;
+    color: #555;
+}
+
+.feedback-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.feedback-list li::before {
+    content: "\2022";
+    color: #555;
+    display: inline-block;
+    width: 1em;
+    margin-left: -1em;
+}
+
+::selection {
+    background: #ffcc00;
+    color: #000;
+}

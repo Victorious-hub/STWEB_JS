@@ -1,0 +1,50 @@
+{% extends "clients/client_base.html" %}
+{% block title %}Client Profile{% endblock title %}
+
+{% block content %}
+<div>  
+    <form method="POST" action="{% url 'contract_create' user.id%}">
+        {% csrf_token %}
+        <h1>Create Contract</h1>
+        {% for field in form %}
+            <div>
+                {{ field.label_tag }}
+                {{ field }}
+                {% if field.errors %}
+                    <div>
+                        {{ field.errors|first }}
+                    </div>
+                {% endif %}
+            </div>
+        {% endfor %}
+        <input type="submit" value="Submit" />
+    </form>
+    </div>
+</div>
+
+<style>
+    .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 50vh;
+    }
+
+    .form-wrapper {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-group {
+        margin-bottom: 35px;
+    }
+
+    .form-control {
+        width: 100%;
+        padding: 10px;
+        font-size: 16px;
+    }
+</style>
+{% endblock content %}

@@ -1,0 +1,119 @@
+{% extends "main/base.html" %}
+{% block title %}Feedbacks {% endblock title %}
+{% block header %}Feedbacks{% endblock header %}
+
+{% block content %}
+    <style>
+
+        .feedback-container {
+            width: 80%;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .feedback-container ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .feedback-container p {
+            margin: 10px 0;
+            font-size: 1em;
+            color: #555;
+        }
+
+        .feedback-container hr {
+            border: 0;
+            height: 1px;
+            background: #ddd;
+            margin: 20px 0;
+        }
+
+        .feedback-container a {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+
+        .feedback-container a:hover {
+            background-color: #0056b3;
+        }
+        
+        .feedback-container p::first-letter {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #007bff;
+        }
+
+        ::selection {
+            background: #ffeb3b;
+            color: #000;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="number"],
+        textarea,
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-family: inherit;
+            font-size: 1em;
+        }
+
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        input[type="number"]:focus,
+        textarea:focus,
+        select:focus {
+            border-color: #007bff;
+            outline: none;
+        }
+
+        input[type="submit"] {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            font-family: inherit;
+            font-size: 1em;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
+
+    <div class="feedback-container">
+        <ul>
+            {% for item in feedbacks %}
+                <p>Client: {{ item.client.user }}</p>
+                <p>Title: {{ item.title }}</p>
+                <p>Description: {{ item.description }}</p>
+                <p>Rating: {{ item.rating }}</p>
+                <p>Created at: {{ item.created_at }}</p>
+                <hr>
+            {% endfor %}
+            {% if request.user.is_authenticated %}
+                <a href="{% url 'client_profile' user.id%}">Feedback Create</a>
+            {% else %}
+                <p>Wanna place your feedback? <a href="{% url 'login' %}">Login</a></p>
+            {% endif %}
+        </ul>
+    </div>
+{% endblock content %}

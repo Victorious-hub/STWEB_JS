@@ -1,0 +1,165 @@
+
+
+.certificate-container {
+    width: 800px;
+    margin: 100px auto;
+    padding: 40px;
+    background: white;
+    position: relative;
+    border-image: url('frame.png');
+}
+
+
+.certificate-background {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    bottom: 0;
+}
+
+.certificate-background1{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    bottom: 0;
+}
+
+.certificate-background1 img {
+    width: 900px;
+    height: 700px;
+    z-index: -1;
+    position: absolute;
+    margin-top: 730px;
+}
+
+.certificate-container {
+    width: 700px;
+    height: 500px;
+    margin: 50 auto;
+    padding: 20px;
+    background: linear-gradient(135deg, #f3ec78, #af4261);
+    position: relative;
+    z-index: -1;
+    /* background-image: url('affiliate-marketing.png'); */
+
+
+    border-width: 60px;
+    border-style: solid;
+    border-image: url('frame.png') 30 round; 
+}
+
+.certificate-header {
+    text-align: center;
+    color: #0046ad;
+    margin-bottom: 20px;
+}
+
+.certificate-header h1 {
+    font-size: 24px;
+    margin: 0;
+    font-weight: 700;
+}
+
+.certificate-header h2 {
+    font-size: 32px;
+    color: red;
+    margin: 0;
+    font-weight: 700;
+}
+
+.certificate-header h3 {
+    font-size: 18px;
+    color: #666;
+    margin: 5px 0;
+}
+
+.certificate-body {
+    text-align: center;
+    margin-top: 30px;
+    font-size: 18px;
+}
+
+.certificate-body p {
+    margin: 10px 0;
+}
+
+.certificate-body .company-name {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+.certificate-footer {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+}
+
+.certificate-footer .sign {
+    text-align: center;
+}
+
+.certificate-footer .sign img {
+    width: 100px;
+}
+
+.certificate-footer .director-info {
+    text-align: center;
+}
+
+.certificate-footer .director-info p {
+    margin: 5px 0;
+    font-size: 14px;
+}
+
+.seal {
+    position: absolute;
+    bottom: 70px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.seal img {
+    width: 150px;
+    opacity: 0.7;
+}
+
+.company-info-container {
+    width: 80%;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.company-info-container ul {
+    list-style-type: none; /* Remove default list styling */
+    padding: 0;
+    
+}
+
+
+.company-info-container blockquote {
+    margin: 0;
+    padding: 0;
+    border-left: 5px solid #007bff;
+    padding-left: 10px;
+    color: #555;
+}
+
+.company-info-container iframe {
+    display: block;
+    margin: 20px auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+q:lang(en) {
+    quotes: "„" "“";
+}
+
+q:lang(ru) {
+    quotes: "«" "»";
+}

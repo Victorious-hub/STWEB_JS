@@ -1,0 +1,642 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+    <link rel="stylesheet" href="{% static 'css/register_login.css' %}">
+    <link rel="stylesheet" href="{% static 'css/news.css' %}">
+    <link rel="stylesheet" href="{% static 'css/vacancy.css' %}">
+    <link rel="stylesheet" href="{% static 'css/affiliates.css' %}">
+    <link rel="stylesheet" href="{% static 'css/certificate.css' %}">
+    <link rel="stylesheet" href="{% static 'css/privacy.css' %}">
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'css/table.css' %}">
+    <link rel="stylesheet" href="{% static 'css/coupons.css' %}">
+    <link rel="stylesheet" href="{% static 'css/feedback.css' %}">
+    <link rel="stylesheet" href="{% static 'css/catalog.css' %}">
+    <link rel="stylesheet" href="{% static 'css/question.css' %}">
+    <link rel="stylesheet" href="{% static 'css/slider.css' %}">
+    <!-- Вставьте это в <head> вашего HTML-документа -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="icon" href="{% static 'images/EPAM.png' %}" type="image/x-icon">
+    <title>Main Page</title>
+</head>
+<style>
+    a.no-underline {
+        text-decoration: none;
+        color: white; /* Начальный цвет ссылок */
+        transition: color 0.3s ease; /* Плавный переход цвета */
+    }
+
+    a:visited {
+        text-decoration-color: hotpink;
+    }
+
+    .animation-wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background: url("background.jpg");
+    }
+
+.animation-container {
+    position: relative;
+    width: 100%;
+    height: 50%;
+}
+
+.scene {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.scene img {
+    position: absolute;
+    opacity: 0;
+}
+
+#burning-house {
+    animation: showBurningHouse 2s forwards;
+    top: 50%;
+    left: 10%;
+}
+
+#crying-person {
+    animation: moveCryingPerson 2s 2s forwards;
+    top: 50%;
+    left: 30%;
+}
+
+#happy-man {
+    animation: replaceCryingBoy 2s 12s forwards;
+    top: 50%;
+    left: 30%;
+}
+
+#money {
+    animation: showMoney 2s 6s forwards, hideMoney 2s 8s forwards;
+    top: 50%;
+    left: 50%; /* Adjusted position to add space */
+}
+
+#money-man {
+    animation: showMoneyMan 2s 8s forwards;
+    top: 50%;
+    left: 50%; /* Same position as money.jpg */
+}
+
+#new-house {
+    animation: replaceHouse 2s 10s forwards;
+    top: 50%;
+    left: 10%;
+}
+
+#pepel1, #pepel2, #pepel3 {
+    width: 20px; /* Adjust the size of the ash */
+    height: 20px; /* Adjust the size of the ash */
+    animation: showPepel 1s infinite;
+}
+
+#pepel1 {
+    top: 55%;
+    left: 12%;
+}
+
+#pepel2 {
+    top: 57%;
+    left: 14%;
+}
+
+#pepel3 {
+    top: 59%;
+    left: 16%;
+}
+
+#company-name {
+    opacity: 0;
+    animation: showCompanyName 2s 12s forwards;
+    position: absolute;
+    top: 10%;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 2em;
+    color: white;
+}
+
+@keyframes showBurningHouse {
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes moveCryingPerson {
+    from {
+        left: -100px;
+        opacity: 0;
+    }
+    to {
+        left: 30%;
+        opacity: 1;
+    }
+}
+
+@keyframes showMoney {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes hideMoney {
+    to {
+        opacity: 0;
+    }
+}
+
+@keyframes showMoneyMan {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes replaceHouse {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes showCompanyName {
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes showPepel {
+    0%, 100% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+}
+
+@keyframes hideBurningHouseAndPepel {
+    to {
+        opacity: 0;
+    }
+}
+
+@keyframes replaceCryingBoy {
+    from {
+        opacity: 0;
+    }
+    to{
+        opacity: 1;
+    }
+}
+
+
+a.no-underline:hover {
+color: #ff6347; /* Цвет при наведении, например, Tomato */
+}
+
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 130vh;
+}
+
+main {
+    flex: 1; /* Основной контент будет заполнять все доступное пространство */
+}
+
+.footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+}
+
+.footer-col {
+    display: inline-block;
+    margin: 0 20px;
+    vertical-align: top;
+}
+
+.footer h4 {
+    margin-bottom: 10px;
+}
+
+.footer ul {
+    list-style: none;
+}
+
+.footer ul li a {
+    color: #fff;
+    text-decoration: none;
+    display: block;
+    padding: 5px 0;
+}
+
+.footer ul li a:hover {
+    text-decoration: underline;
+}
+
+.pl {
+    display: block;
+    width: 9.375em;
+    height: 9.375em;
+}
+
+.preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: white; /* Белый фон */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+/* Скрыть прелоадер после загрузки */
+.hidden {
+    display: none;
+}
+
+.pl {
+    display: block;
+    width: 9.375em; /* 150px */
+    height: 9.375em; /* 150px */
+}
+
+/* Animation settings for all animated elements */
+.pl__arrows,
+.pl__ring-rotate,
+.pl__ring-stroke,
+.pl__tick {
+    animation-duration: 2s;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+}
+
+/* Arrow animation */
+.pl__arrows {
+    animation-name: arrows42;
+    transform: rotate(45deg);
+    transform-origin: 16px 52px;
+}
+
+/* Ring rotation and stroke transformations */
+.pl__ring-rotate,
+.pl__ring-stroke {
+    transform-origin: 80px 80px;
+}
+
+.pl__ring-rotate {
+    animation-name: ringRotate42;
+}
+
+.pl__ring-stroke {
+    animation-name: ringStroke42;
+    transform: rotate(-45deg);
+}
+
+/* Tick animation */
+.pl__tick {
+    animation-name: tick42;
+}
+
+/* Stagger the tick animation delays */
+.pl__tick:nth-child(2) {
+    animation-delay: -1.75s;
+}
+
+.pl__tick:nth-child(3) {
+    animation-delay: -1.5s;
+}
+
+.pl__tick:nth-child(4) {
+    animation-delay: -1.25s;
+}
+
+.pl__tick:nth-child(5) {
+    animation-delay: -1s;
+}
+
+.pl__tick:nth-child(6) {
+    animation-delay: -0.75s;
+}
+
+.pl__tick:nth-child(7) {
+    animation-delay: -0.5s;
+}
+
+.pl__tick:nth-child(8) {
+    animation-delay: -0.25s;
+}
+
+/* Arrow rotation animation */
+@keyframes arrows42 {
+    from {
+        transform: rotate(45deg);
+    }
+
+    to {
+        transform: rotate(405deg);
+    }
+}
+
+/* Ring rotation animation */
+@keyframes ringRotate42 {
+    from {
+        transform: rotate(0);
+    }
+
+    to {
+        transform: rotate(720deg);
+    }
+}
+
+/* Ring stroke animation */
+@keyframes ringStroke42 {
+    from,
+    to {
+        /* stroke-dashoffset задает, насколько смещена эта пунктирная линия относительно начала пути. */
+        stroke-dashoffset: 452; 
+        transform: rotate(-45deg);
+    }
+
+    50% {
+        stroke-dashoffset: 169.5;
+        transform: rotate(-180deg);
+    }
+}
+
+/* Tick animation */
+@keyframes tick42 {
+    from, 3%, 47%,
+    to {
+        stroke-dashoffset: -12;
+    }
+
+    14%, 36% {
+        stroke-dashoffset: 0;
+    }
+}
+.links li{
+    list-style-type: "\1F600"; /* Remove default list styling */
+    padding: 0;
+}
+
+.links a {
+    text-decoration: none;
+    color: #007bff;
+    transition: color 0.3s ease;
+}
+
+.links a:hover {
+    color: #0056b3;
+}
+.main {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: linear-gradient(135deg, #f3ec78, #af4261);
+        }
+
+        .overlay {
+            background: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            color: white;
+        }
+
+        .title {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .cols {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .timer-box {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 10px;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        .timer-box input {
+            width: 60px;
+            height: 60px;
+            font-size: 24px;
+            text-align: center;
+            border: none;
+            border-radius: 5px;
+            background: rgba(255, 255, 255, 0.8);
+            color: #333;
+        }
+
+        .timer-box label {
+            display: block;
+            margin-top: 10px;
+            font-size: 14px;
+            color: #ddd;
+        }
+</style>
+<body>
+    {% if request.user.is_authenticated %}
+        <div class="main">
+            <div class="overlay">
+                <div class="title">User timer</div>
+                <div class="title" id="end-date"></div>
+                <div class="cols">
+                    <div class="timer-box">
+                        <input type="text" readonly value="0" />
+                        <br />
+                        <label for="#">Days</label>
+                    </div>
+                    <div class="timer-box">
+                        <input type="text" readonly value="0" />
+                        <br />
+                        <label for="#">Hours</label>
+                    </div>
+                    <div class="timer-box">
+                        <input type="text" readonly value="0">
+                        <br />
+                        <label for="#">Minutes</label>
+                    </div>
+                    <div class="timer-box">
+                        <input type="text" readonly value="0">
+                        <br />
+                        <label for="#">Seconds</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+
+
+    <nav class="menu" tabindex="0">
+        <div class="smartphone-menu-trigger"></div>
+      <header class="avatar">
+            <img src="{% static 'images/affiliate-marketing.png' %}" alt="Affiliate Marketing" style="width:150px;height:150px;">
+        <h2>RockSolid</h2>
+      </header>
+        <ul>
+            <li tabindex="0"><span><a href="{% url 'insurance_list' %}" class="no-underline">Catalog</a></span></li>
+            {% if request.user.is_authenticated %}
+            {% if request.user.is_superuser %}
+                <li tabindex="0">
+                    <span><a href="{% url 'scroll' %}" class="no-underline link-admin">Scroll animation</a></span>
+                </li>
+                <li tabindex="0">
+                    <span><a href="{% url 'contacts' %}" class="no-underline link-admin">Contacts</a></span>
+                </li>
+                <li tabindex="0">
+                    <span><a href="{% url 'admin:index' %}" class="no-underline link-admin">Go to admin page</a></span>
+                </li>
+                <li tabindex="0">
+                    <span><a href="{% url 'logout' %}" class="link-admin no-underline">Logout</a></span>
+                </li>
+                <li tabindex="0">
+                    <span><a href="{% url 'company_statisctics' user.id %}" class="link-admin no-underline">Company statistics</a></span>
+                </li>
+                {% elif request.user.is_staff %}
+                    <li tabindex="0">
+                        <span><a href="{% url 'agent_profile' user.id %}" class="link-agent no-underline">Agent Profile</a></span>
+                    </li>
+                {% elif request.user.is_client %}
+                    <li tabindex="0"><span><a href="{% url 'client_profile' user.id %}" class="link-client no-underline">Client Profile</a></span></li>
+                {% endif %}
+            {% else %}
+                <li tabindex="0"><span><a href="{% url 'client_register' %}" class="no-underline">Register</a></span></li>
+            {% endif %}
+            <li tabindex="0">
+                <span><a class="no-underline" href="{% url 'main' %}">Main</a></span>
+            </li>
+            <li tabindex="0">
+                <span><a class="no-underline" href="{% url 'company_info' %}">About company</a></span>
+            </li>
+            <li>
+                <span><a class="no-underline" href="{% url 'news_list' %}">News</a></span>
+            </li>
+            <li>
+                <span><a class="no-underline" href="{% url 'privacy' %}">Privacy</a></span>
+            </li>
+            <li>
+                <span><a class="no-underline" href="{% url 'vacancy_list' %}">Check Vacancies</a></span>
+            </li>
+            <li>
+                <span><a class="no-underline" href="{% url 'affiliate_list' %}">Affiliate contacts</a></span>
+            </li>
+            <li>
+                <span><a class="no-underline" href="{% url 'feedback_list' %}">Check Feedbacks</a></span>
+            </li>
+            <li>
+                <span><a a class="no-underline" href="{% url 'question_list' %}">Question answers</a></span>
+            </li>
+            <li>
+                <span><a class="no-underline" href="{% url 'coupon_list' %}">Available coupons</a>
+                </li></span>                
+            </li>
+      </ul>
+    </nav>
+
+    <main>
+        <h1>
+            {% block header %}{% endblock header %}
+        </h1>
+        <section>
+            <article>
+                {% block content %}{% endblock content %}
+            </article>
+        </section>
+    </main>
+    <footer class="footer">
+        <div class="footer-col">
+            <h4>Useful Links</h4>
+            <ul class="links">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Services</a></li>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-col">
+            <h4>Support</h4>
+            <ul>
+                <li><a href="#">FAQ</a></li>
+                <li><a href="#">Help Center</a></li>
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">Terms & Conditions</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-col">
+            <h4>Support</h4>
+            <ul>
+                <li><a href="#">FAQ</a></li>
+                <li><a href="#">Help Center</a></li>
+                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="#">Terms & Conditions</a></li>
+            </ul>
+        </div>
+    </footer>
+</body>
+<script src="{% static 'js/slider_settings.js' %}"></script>
+<script src="{% static 'js/slider.js' %}"></script>
+<script src="{% static 'js/timer.js' %}"
+        defer
+        data-id="{{ request.user.id }}"></script>
+</html>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const preloader = document.getElementById("preloader");
+        setTimeout(() => {
+            preloader.classList.add("hidden"); 
+        }, 1000); 
+    });
+    document.addEventListener('DOMContentLoaded', function() {
+    const newHouse = document.getElementById('new-house');
+    const burningHouse = document.getElementById('burning-house');
+    const money = document.getElementById('money');
+    const moneyMan = document.getElementById('money-man');
+    const pepels = document.querySelectorAll('.pepel');
+
+    newHouse.addEventListener('animationstart', function() {
+        burningHouse.style.animation = 'hideBurningHouseAndPepel 2s forwards';
+        pepels.forEach(pepel => {
+            pepel.style.animation = 'hideBurningHouseAndPepel 2s forwards';
+        });
+    });
+
+    moneyMan.addEventListener('animationstart', function() {
+        money.style.animation = 'hideMoney 2s forwards';
+    });
+});
+</script>

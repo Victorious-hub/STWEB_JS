@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>График разложения и точной функции</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-streaming"></script>
+</head>
+<body>
+    <form id="inputForm">
+        <input type="number" step="any" placeholder="min value" id="minX">
+        <input type="number" step="any" placeholder="max value" id="maxX">
+        <button type="submit">Submit</button>
+    </form>
+    <button id="saveChart">Save Chart</button>
+    <canvas id="myChart" width="800" height="400"></canvas>
+    <script>
+        function taylorArcsin(x, terms) {
+            let sum = 0;
+            for (let n = 0; n < terms; n++) {
+                let numerator = factorial(2 * n);
+                let denominator = Math.pow(4, n) * Math.pow(factorial(n), 2) * (2 * n + 1);
+                sum += (numerator / denominator) * Math.pow(x, 2 * n + 1);
+            }
+            return sum;
+        }
+
+        function factorial(num) {
+            if (num <= 1) return 1;
+            return num * factorial(num - 1);
+        }
+
+        let myChart;
+
+        function plotChart(minX, maxX) {
+            let xValues = [];
+            let taylorValues = [];
+            let mathValues = [];
+            const terms = 50;
+
+            for (let x = minX; x <= maxX; x += 0.01) {
+                xValues.push(x);
+                taylorValues.push(taylorArcsin(x, terms));
+                mathValues.push(Math.asin(x));
+            }
+
+            const ctx = document.getElementById('myChart').getContext('2d');
+
+            if (myChart) {
+                myChart.destroy();
+            }
+
+            myChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: xValues,
+                    datasets: [
+                        {
+                            label: `Ряд Тейлора (n = ${terms})`,
+                            data: taylorValues,
+                            borderColor: 'red',
+                            backgroundColor: 'rgba(255, 0, 0, 0.5)',
+                            fill: false,
+                            pointRadius: 3,
+                            pointHoverRadius: 5,
+                        },
+                        {
+                            label: 'Math.asin(x)',
+                            data: mathValues,
+                            borderColor: 'blue',
+                            backgroundColor: 'rgba(0, 0, 255, 0.5)',
+                            fill: false,
+                            pointRadius: 3,
+                            pointHoverRadius: 5,
+                        },
+                    ],
+                },
+                options: {
+                    responsive: true,
+                    animation: {
+                        duration: 1500,
+                        easing: 'easeInOutQuad',
+                    },
+                    plugins: {
+                        legend: {
+                            position: 'top',
+                        },
+                        title: {
+                            display: true,
+                            text: 'Сравнение ряда Тейлора и точной функции arcsin(x)',
+                        },
+                    },
+                    scales: {
+                        x: {
+                            title: {
+                                display: true,
+                                text: 'x',
+                            },
+                        },
+                        y: {
+                            title: {
+                                display: true,
+                                text: 'F(x)',
+                            },
+                        },
+                    },
+                    elements: {
+                        point: {
+                            radius: 0,
+                            hoverRadius: 5,
+                            animation: {
+                                duration: 2000,
+                                easing: 'easeInOutQuad',
+                            },
+                        },
+                        line: {
+                            tension: 0.4,
+                        },
+                    },
+                },
+            });
+        }
+
+        document.getElementById('inputForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const minX = parseFloat(document.getElementById('minX').value);
+            const maxX = parseFloat(document.getElementById('maxX').value);
+
+            if (isNaN(minX) || isNaN(maxX) || minX >= maxX || minX < -1 || maxX > 1) {
+                alert("Введите допустимые значения: -1 < minX < maxX < 1");
+                return;
+            }
+
+            plotChart(minX, maxX);
+        });
+
+        document.getElementById('saveChart').addEventListener('click', function() {
+            const link = document.createElement('a');
+            link.href = myChart.toBase64Image();
+            link.download = 'chart.png';
+            link.click();
+        });
+    </script>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@3.3.2"></script>
+<script src="https://cdn.jsdelivr.net/npm/luxon@1.27.0"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-luxon@1.0.0"></script>
+<script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-streaming@2.0.0"></script>
+</html>

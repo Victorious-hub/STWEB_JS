@@ -1,0 +1,34 @@
+{% extends "agents/agent_base.html" %}
+{% block title %}Contracts{% endblock title %}
+
+{% block content %}
+    <div>
+        <div>
+        {% if messages %}
+            <div>
+                {% for message in messages %}
+                    <div role="alert">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+            </div>
+        {% endif %}
+        <form method="POST" action="{% url 'policy_create' user.id%}">
+            {% csrf_token %}
+            <h1>Create Policy</h1>
+            {% for field in form %}
+                <div>
+                    {{ field.label_tag }}
+                    {{ field }}
+                    {% if field.errors %}
+                        <div>
+                            {{ field.errors|first }}
+                        </div>
+                    {% endif %}
+                </div>
+            {% endfor %}
+            <input type="submit" value="Submit" />
+        </form>
+        </div>
+    </div>
+{% endblock content %}

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slider Settings</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+<body>
+    <form id="slider-settings-form">
+        <h1>Slider Settings</h1>
+        <label>
+            Auto Slide:
+            <input type="checkbox" id="auto" />
+        </label>
+        <label>
+            Stop on Hover:
+            <input type="checkbox" id="stopMouseHover" />
+        </label>
+        <label>
+            Loop:
+            <input type="checkbox" id="loop" />
+        </label>
+        <label>
+            Delay (seconds):
+            <input type="number" id="delay" min="1" />
+        </label>
+        <label>
+            Navigation Arrows:
+            <input type="checkbox" id="navs" />
+        </label>
+        <label>
+            Pagination:
+            <input type="checkbox" id="pags" />
+        </label>
+        <button type="submit">Save</button>
+    </form>
+    <button id="back-btn">Back to Slider</button>
+    <script src="{% static 'js/settings.js' %}"></script>
+</body>
+</html>

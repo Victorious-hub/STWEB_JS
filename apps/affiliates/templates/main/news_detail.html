@@ -1,0 +1,16 @@
+{% extends "main/base.html" %}
+{% block title %}{{ news.title }}{% endblock title %}
+{% block header %}{{ news.title }}{% endblock header %}
+
+{% block content %}
+    <div class="news-detail">
+        <h1>{{ news.title }}</h1>
+        <span class="news-time">{{ news.published_date }}</span>
+        {% if news.image %}
+            <img src="{{ news.image.url }}" alt="{{ news.title }}" class="news-image">
+        {% endif %}
+        <div class="news-content">
+            {{ news.content | safe | linebreaks }}
+        </div>
+    </div>
+{% endblock content %}
